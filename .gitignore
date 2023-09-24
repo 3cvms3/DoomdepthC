@@ -1,0 +1,7 @@
+*.a
+*.o
+*.out
+*.gc*
+vgcore*
+.vscode
+Doomdepthc
