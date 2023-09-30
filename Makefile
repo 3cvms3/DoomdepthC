@@ -5,35 +5,22 @@
 #                                                             +:+       +:+        +:+           +:+          #
 #    By: camillia <chammou1@myges.fr>                        +#++:++#  +#++:++#++ :#:           +#+           #
 #                                                           +#+              +#+ +#+   +#+#    +#+            #
-#    Created: 2023/09/24 17:47:50 by camillia              #+#       #+#    #+# #+#    #+#    #+#             #
-#    Updated: 2023/09/24 17:47:50 by camillia             ########## ########   ######## ###########          #
+#    Created: 2023/09/30 17:47:57 by camillia              #+#       #+#    #+# #+#    #+#    #+#             #
+#    Updated: 2023/09/30 21:11:43 by camillia             ########## ########   ######## ###########          #
 #                                                                                                             #
 # *********************************************************************************************************** #
 
+NAME = Doomdepths
 
-CC	=	gcc
-
-CFLAGS	=	-o $(NAME) -g3 -Wall -Wextra
-
-LIBS	=	-lcsfml-audio -lcsfml-graphics -lcsfml-window -lcsfml-system -lpthread
-
-SRC	=	$(wildcard *.c src/*.c src/utils/*.c)
-
-OBJ	=	$(patsubst %.c, %.o, $(SRC))
-
-NAME	=	Doomdepthc
+SRC = src/*/*.c
 
 all:
-	make $(NAME)
-
-$(NAME):	$(OBJ)
-	$(CC) $(OBJ) $(CFLAGS) $(LIBS)
-	make clean
+	gcc -g3 -o $(NAME) $(SRC) -L./inc -I./inc
 
 clean:
-	rm -rf $(OBJ)
+	rm -f *~ | rm -f *.o
 
-fclean:	clean
-	rm -rf $(NAME)
+fclean: clean
+	rm -f $(NAME)
 
-re:	fclean	all
+re:	fclean all

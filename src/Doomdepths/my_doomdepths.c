@@ -1,23 +1,35 @@
 /* ********************************************************************************************************* */
 /*                                                                                                           */
 /*                                                              :::::::::: ::::::::   :::::::: :::::::::::   */
-/*   Doomdepthc.h                                              :+:       :+:    :+: :+:    :+:    :+:        */
+/*   my_doomdepths.c                                           :+:       :+:    :+: :+:    :+:    :+:        */
 /*                                                            +:+       +:+        +:+           +:+         */
 /*   By: camillia <chammou1@myges.fr>                        +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
-/*   Created: 2023/09/24 17:47:37 by camillia              #+#       #+#    #+# #+#    #+#    #+#            */
-/*   Updated: 2023/09/24 17:47:37 by camillia             ########## ########   ######## ###########         */
+/*   Created: 2023/09/24 17:47:43 by camillia              #+#       #+#    #+# #+#    #+#    #+#            */
+/*   Updated: 2023/09/30 21:03:08 by camillia             ########## ########   ######## ###########         */
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#ifndef DOOMDEPTHC_H_
-#define DOOMDEPTHC_H_
+#include "Doomdepths.h"
 
-#include <stdio.h>
-#include <string.h>
-#include <assert.h>
-#include <stdlib.h>
+int Doomdepths(void)
+{
+    my_random();
 
-int Doomdepthc(void);
+    Monster monsters[4];
+    int monster_count = my_random_monsters();
+    
+    for (int i = 0; i < monster_count; i++) {
+        monsters[i] = my_generate_monsters();
+    }
+    my_display_monsters(monsters, monster_count);
 
-#endif
+    return 0;
+}
+
+int main(void)
+{
+    Doomdepths();
+    return 0;
+}
+
