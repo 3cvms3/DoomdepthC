@@ -6,14 +6,14 @@
 /*   By: camillia <chammou1@myges.fr>                        +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
 /*   Created: 2023/09/30 15:16:35 by camillia              #+#       #+#    #+# #+#    #+#    #+#            */
-/*   Updated: 2023/09/30 21:06:02 by camillia             ########## ########   ######## ###########         */
+/*   Updated: 2023/10/02 18:52:18 by camillia             ########## ########   ######## ###########         */
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
 #ifndef Monster_H_
 #define Monster_H_
 
-#define ASCII_LINES_M (sizeof(monster_art) / sizeof(monster_art[0]))
+#define ASCII_LINES_M 10
 
 typedef struct {
     int health;
