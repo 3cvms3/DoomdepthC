@@ -4,4 +4,6 @@
 *.gc*
 vgcore*
 .vscode
-Doomdepthc
+Doomdepths
+**/*/.DS_Store
+.DS_Store

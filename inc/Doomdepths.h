@@ -21,6 +21,7 @@
 #include <stdlib.h>
 #include <stdlib.h>
 #include "Monster.h"
+#include "Cartography.h"
 #include <sys/ioctl.h>
 #include <unistd.h>
 
