@@ -1,20 +1,27 @@
 /* ********************************************************************************************************* */
 /*                                                                                                           */
 /*                                                              :::::::::: ::::::::   :::::::: :::::::::::   */
-/*   init_player.c                                             :+:       :+:    :+: :+:    :+:    :+:        */
+/*   random_monsters.c                                         :+:       :+:    :+: :+:    :+:    :+:        */
 /*                                                            +:+       +:+        +:+           +:+         */
 /*   By: camillia <chammou1@myges.fr>                        +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
-/*   Created: 2023/10/02 19:06:45 by camillia              #+#       #+#    #+# #+#    #+#    #+#            */
-/*   Updated: 2023/10/07 15:24:26 by camillia             ########## ########   ######## ###########         */
+/*   Created: 2023/09/30 15:21:57 by camillia              #+#       #+#    #+# #+#    #+#    #+#            */
+/*   Updated: 2023/10/07 17:23:44 by camillia             ########## ########   ######## ###########         */
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
 #include "Doomdepths.h"
 
-void my_init_player(Player *player) {
+Monster my_generate_monsters(int level) {
 
-    player->health = 100;
-    player->attacks_turn = 2;
-    player->equipped_weapon.weapon_power = 10; 
+    Monster enemy;
+    
+    enemy.health = (rand() % 100 + 1) * level;
+    enemy.min_attack = (rand() % 10 + 1) * level;
+    enemy.max_attack = (rand() % 20 + enemy.min_attack) * level;
+    enemy.defense = (rand() % 10 + 1) * level;
+
+    return enemy;
 }
+
+
