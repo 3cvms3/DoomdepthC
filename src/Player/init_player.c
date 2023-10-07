@@ -1,39 +1,19 @@
 /* ********************************************************************************************************* */
 /*                                                                                                           */
 /*                                                              :::::::::: ::::::::   :::::::: :::::::::::   */
-/*   my_doomdepths.c                                           :+:       :+:    :+: :+:    :+:    :+:        */
+/*   init_player.c                                             :+:       :+:    :+: :+:    :+:    :+:        */
 /*                                                            +:+       +:+        +:+           +:+         */
 /*   By: camillia <chammou1@myges.fr>                        +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
-/*   Created: 2023/09/24 17:47:43 by camillia              #+#       #+#    #+# #+#    #+#    #+#            */
-/*   Updated: 2023/10/07 15:24:56 by camillia             ########## ########   ######## ###########         */
+/*   Created: 2023/10/02 19:06:45 by camillia              #+#       #+#    #+# #+#    #+#    #+#            */
+/*   Updated: 2023/10/07 15:24:26 by camillia             ########## ########   ######## ###########         */
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
 #include "Doomdepths.h"
 
-int Doomdepths(void)
-{
-    my_random();
-
-    Monster monsters[4];
-    int monster_count = my_random_monsters();
-    
-    for (int i = 0; i < monster_count; i++) {
-        monsters[i] = my_generate_monsters();
-    }
-
-    my_display_monsters(monsters, monster_count);
-
-    Player player;
-    init_player(&player);
-    my_display_player(&player);
-
-    return 0;
-}
-
-int main(void)
-{
-    Doomdepths();
-    return 0;
+void init_player(Player *player) {
+    player->health = 100;
+    player->attacks_turn = 2;
+    player->equipped_weapon.weapon_power = 20; 
 }

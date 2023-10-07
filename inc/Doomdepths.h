@@ -6,7 +6,7 @@
 /*   By: camillia <chammou1@myges.fr>                        +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
 /*   Created: 2023/09/24 17:47:37 by camillia              #+#       #+#    #+# #+#    #+#    #+#            */
-/*   Updated: 2023/09/30 17:54:41 by camillia             ########## ########   ######## ###########         */
+/*   Updated: 2023/10/07 15:27:44 by camillia             ########## ########   ######## ###########         */
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
@@ -21,6 +21,7 @@
 #include <stdlib.h>
 #include <stdlib.h>
 #include "Monster.h"
+#include "Player.h"
 #include "Cartography.h"
 #include <sys/ioctl.h>
 #include <unistd.h>

@@ -1,39 +1,36 @@
 /* ********************************************************************************************************* */
 /*                                                                                                           */
 /*                                                              :::::::::: ::::::::   :::::::: :::::::::::   */
-/*   my_doomdepths.c                                           :+:       :+:    :+: :+:    :+:    :+:        */
+/*   Player.h                                                  :+:       :+:    :+: :+:    :+:    :+:        */
 /*                                                            +:+       +:+        +:+           +:+         */
 /*   By: camillia <chammou1@myges.fr>                        +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
-/*   Created: 2023/09/24 17:47:43 by camillia              #+#       #+#    #+# #+#    #+#    #+#            */
-/*   Updated: 2023/10/07 15:24:56 by camillia             ########## ########   ######## ###########         */
+/*   Created: 2023/10/02 18:55:05 by camillia              #+#       #+#    #+# #+#    #+#    #+#            */
+/*   Updated: 2023/10/07 15:23:06 by camillia             ########## ########   ######## ###########         */
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "Doomdepths.h"
+#ifndef Player_H_
+#define Player_H_
 
-int Doomdepths(void)
-{
-    my_random();
+typedef struct {
+    int weapon_power;
+} Weapon;
 
-    Monster monsters[4];
-    int monster_count = my_random_monsters();
-    
-    for (int i = 0; i < monster_count; i++) {
-        monsters[i] = my_generate_monsters();
-    }
+typedef struct {
+    int health;
+    int mana;
+    int gold;
+    int attacks_turn;
+    Weapon equipped_weapon;
+} Player;
 
-    my_display_monsters(monsters, monster_count);
+/*typedef struct Position Position;
+struct Position {
+    Floor *currentFloor;
+    Room *currentRoom;
+};*/
 
-    Player player;
-    init_player(&player);
-    my_display_player(&player);
-
-    return 0;
-}
-
-int main(void)
-{
-    Doomdepths();
-    return 0;
-}
+void my_display_player(Player *player);
+void init_player(Player *player);
+#endif
