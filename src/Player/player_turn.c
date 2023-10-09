@@ -30,6 +30,7 @@ void my_player_turn(Player *player, Monster *monsters, int monster_count) {
             my_player_attack(player, &monsters[target]);
             player->attacks_turn--;
             my_display_monsters(monsters, monster_count);
+            my_display_player(player);
         } else {
             printf("Monstre invalide!\n");
         }
@@ -37,8 +38,8 @@ void my_player_turn(Player *player, Monster *monsters, int monster_count) {
 
     if (choice == 2 || player->attacks_turn == 0) {
         my_monsters_attack(monsters, monster_count, player);
-        my_display_player(player);
         my_display_monsters(monsters, monster_count);
+        my_display_player(player);
         player->attacks_turn = 2; //on init les attackes
     }
 }
