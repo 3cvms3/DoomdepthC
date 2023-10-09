@@ -15,14 +15,14 @@
 
 typedef struct {
     int weapon_power;
-} Weapon;
+} CWeapon;
 
 typedef struct {
     int health;
     int mana;
     int gold;
     int attacks_turn;
-    Weapon equipped_weapon;
+    CWeapon equipped_weapon;
 } Player;
 
 /*typedef struct Position Position;

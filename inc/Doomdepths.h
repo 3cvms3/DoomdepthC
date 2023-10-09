@@ -23,6 +23,7 @@
 #include "Monster.h"
 #include "Player.h"
 #include "Cartography.h"
+#include "Inventory.h"
 #include <sys/ioctl.h>
 #include <unistd.h>
 
