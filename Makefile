@@ -12,7 +12,9 @@
 
 NAME = Doomdepths
 
-SRC = src/*/*.c
+SRC_DIR = src
+
+SRC := $(shell find $(SRC_DIR) -name '*.c')
 
 all:
 	gcc -g3 -o $(NAME) $(SRC) -L./inc -I./inc
