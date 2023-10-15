@@ -13,24 +13,20 @@
 #ifndef Player_H_
 #define Player_H_
 
-typedef struct {
-    int weapon_power;
-} CWeapon;
+#include "Doomdepths.h"
 
-typedef struct {
+typedef struct Player Player;
+struct Player {
     int health;
     int mana;
-    int gold;
-    int attacks_turn;
-    CWeapon equipped_weapon;
-} Player;
+    int number_of_attacks;
+    Position position;
+    Weapon *equipped_weapon;
+    Armor *equipped_armor;
+    Inventory *inventory;
+};
 
-/*typedef struct Position Position;
-struct Position {
-    Floor *currentFloor;
-    Room *currentRoom;
-};*/
-
+Player *init_player(Floor *floor);
 void my_display_player(Player *player);
 void my_init_player(Player *player);
 

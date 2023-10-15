@@ -20,19 +20,19 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <stdlib.h>
-#include "Monster.h"
-#include "Player.h"
-#include "Cartography.h"
 #include "Inventory.h"
+#include "Monster.h"
+#include "Cartography.h"
+#include "Player.h"
 #include <sys/ioctl.h>
 #include <unistd.h>
 
 int Doomdepths(void);
 void my_random();
 void my_player_attack(Player *player, Monster *monster);
-void my_display_monsters(Monster *enemies, int count);
-void game_loop(Player *player, Monster *monsters, int monster_count, int *level);
-void my_monsters_attack(Monster *monsters, int monster_count, Player *player);
-void my_player_turn(Player *player, Monster *monsters, int monster_count);
+void fight_loop(Player *player, Room *room);
+void game_loop(Floor *last_floor, Player *player);
+void my_monsters_attack(Monster **monsters, int monster_count, Player *player);
+void my_player_turn(Player *player, Monster **monsters, int monster_count);
 void my_handle_level_up(Player *player, Monster *monsters, int monster_count, int *level);
 #endif

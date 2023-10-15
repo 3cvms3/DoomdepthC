@@ -13,31 +13,19 @@
 #include "Doomdepths.h"
 
 int Doomdepths(void) {
+    // char choice;
 
-    int level = 1;
-    char choice;
-
-    do {
-        my_random();
-        
-        Monster monsters[4];
-        int monster_count = my_random_monsters();
+    my_random();
     
-        for (int i = 0; i < monster_count; i++) {
-            monsters[i] = my_generate_monsters(level);
-        }
-        my_display_monsters(monsters, monster_count);
+    Floor *last_floor = NULL;
+    last_floor = add_floor(last_floor);
 
-        Player player;
-        my_init_player(&player);
-        my_display_player(&player);
+    Player *player = init_player(last_floor);
 
-        game_loop(&player, monsters, monster_count, &level);
+    game_loop(last_floor, player);
 
-        printf("Voulez-vous rejouer? (O/N) ");
-        scanf(" %c", &choice);
-
-    } while (choice == 'O' || choice == 'o');
+    // printf("Voulez-vous rejouer? (O/N) ");
+    // scanf(" %c", &choice);
 
     return 0;
 }

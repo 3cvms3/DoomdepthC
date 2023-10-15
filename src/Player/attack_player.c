@@ -15,7 +15,7 @@
 
 void my_player_attack(Player *player, Monster *monster) {
 
-    int damage = player->equipped_weapon.weapon_power - monster->defense;
+    int damage = 10;
 
     if (damage < 0) damage = 0;
         monster->health -= damage;

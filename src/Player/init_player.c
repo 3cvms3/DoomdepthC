@@ -12,9 +12,19 @@
 
 #include "Doomdepths.h"
 
-void my_init_player(Player *player) {
+Player *init_player(Floor *floor) {
+    Player *player = malloc(sizeof(Player));
 
     player->health = 100;
-    player->attacks_turn = 2;
-    player->equipped_weapon.weapon_power = 10; 
+    player->mana = 100;
+
+    player->position.current_floor = floor;
+    player->position.current_room = floor->rooms[0];
+
+    player->equipped_weapon = create_weapon();
+    player->number_of_attacks = player->equipped_weapon->number_of_attacks;
+    player->equipped_armor = create_armor();
+    player->inventory = init_inventory();
+
+    return player;
 }

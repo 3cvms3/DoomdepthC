@@ -13,17 +13,37 @@
 
 #include "Doomdepths.h"
 
-void game_loop(Player *player, Monster *monsters, int monster_count, int *level) {
-
+void game_loop(Floor *last_floor, Player *player) {
     while (player->health > 0) {
-        printf("Player");
-        my_player_turn(player, monsters, monster_count);
-        if (player->health <= 0) {
-            printf("Vous avez été tué par les monstres. Fin du jeu!\n");
-            break;
-        }
-        if (my_verif_death_monsters(monsters, monster_count)) {
-            my_handle_level_up(player, monsters, monster_count, level);
+        int prompt_choice;
+
+        printf("1. Move to next room\n");
+        printf("2. Open your inventory\n");
+        printf("3. Open your map\n");
+        scanf("%d", &prompt_choice);
+
+        switch (prompt_choice) {
+            case 1:
+                if (player->position.current_room->has_stairs) {
+                    last_floor = add_floor(last_floor);
+                    change_floor(last_floor, &player->position, last_floor->floor_number);
+                } else {
+                    change_room(&player->position);
+                }
+
+                /* On lance le combat si la salle suivante n'est pas vide */
+                if (player->position.current_room->number_of_monsters > 0) {
+                    fight_loop(player, player->position.current_room);
+                }
+                break;
+            case 2:
+                display_inventory(player->inventory);
+                break;
+            case 3:
+                display_floors(last_floor, &player->position);
+                break;
+            default:
+                break;
         }
     }
 }

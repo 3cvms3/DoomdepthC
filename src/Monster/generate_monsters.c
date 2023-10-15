@@ -12,14 +12,14 @@
 
 #include "Doomdepths.h"
 
-Monster my_generate_monsters(int level) {
+Monster *my_generate_monsters(int level) {
 
-    Monster enemy;
+    Monster *enemy = malloc(sizeof(Monster));
     
-    enemy.health = (rand() % 100 + 1) * level;
-    enemy.min_attack = (rand() % 10 + 1) * level;
-    enemy.max_attack = (rand() % 20 + enemy.min_attack) * level;
-    enemy.defense = (rand() % 10 + 1) * level;
+    enemy->health = (rand() % 100 + 1) * level;
+    enemy->min_attack = (rand() % 10 + 1) * level;
+    enemy->max_attack = (rand() % 20 + enemy->min_attack) * level;
+    enemy->defense = (rand() % 10 + 1) * level;
 
     return enemy;
 }

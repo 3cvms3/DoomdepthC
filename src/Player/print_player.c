@@ -30,7 +30,5 @@ void my_display_player(Player *player) {
     for (int line = 0; line < sizeof(player_art) / sizeof(player_art[0]); line++) {
         printf("%*s%s\n", diff, "", player_art[line]);
     }
-
-  printf("%*sH: %d, A: %d-%d, D: %d, Gold: %d, Mana: %d\n", diff, "",player->health, player->equipped_weapon.weapon_power, player->equipped_weapon.weapon_power,player->gold, player->mana);
 }
 

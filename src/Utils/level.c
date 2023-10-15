@@ -13,13 +13,13 @@
 #include "Doomdepths.h"
 
 
-void my_handle_level_up(Player *player, Monster *monsters, int monster_count, int *level) {
+// void my_handle_level_up(Player *player, Monster *monsters, int monster_count, int *level) {
 
-    printf("Félicitations! Vous avez tué tous les monstres.\n");
-    (*level)++;
-    printf("Niveau %d\n", *level);
-    for (int i = 0; i < monster_count; i++) {
-        monsters[i] = my_generate_monsters(*level); //on genere des monstres plus puissant 
-    }
-    my_display_monsters(monsters, monster_count);
-}
+//     printf("Félicitations! Vous avez tué tous les monstres.\n");
+//     (*level)++;
+//     printf("Niveau %d\n", *level);
+//     for (int i = 0; i < monster_count; i++) {
+//         monsters[i] = my_generate_monsters(*level); //on genere des monstres plus puissant 
+//     }
+//     my_display_monsters(monsters, monster_count);
+// }

@@ -7,7 +7,7 @@
 Floor *add_floor(Floor *last_floor) {
     Floor *new_floor = malloc(sizeof(Floor));
 
-    new_floor->number_of_rooms = (rand() % 4) + 1; // 1..4
+    new_floor->number_of_rooms = (rand() % 3) + 1; // 1..3
     new_floor->rooms = malloc(sizeof(Room *) * new_floor->number_of_rooms);
     new_floor->previous_floor = last_floor;
 

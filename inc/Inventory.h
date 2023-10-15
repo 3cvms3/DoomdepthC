@@ -6,7 +6,7 @@ struct Weapon {
     char *name;
     int min_damage;
     int max_damage;
-    int number_of_attack;
+    int number_of_attacks;
 };
 
 typedef struct Armor Armor;

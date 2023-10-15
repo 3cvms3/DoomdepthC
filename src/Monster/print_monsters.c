@@ -25,16 +25,16 @@ const char *monster_art[] = {
     "    \\/ ||    ||     "
 };
 
-void my_display_monsters(Monster *enemies, int count) {
+void my_display_monsters(Monster **enemies, int count) {
     
     int diff = 25;
 
     for (int i = 0; i < count; i++) {
-        if (enemies[i].health > 0) {  //on affiche que les monstres qui sont en vie 
+        if (enemies[i]->health > 0) {  //on affiche que les monstres qui sont en vie 
             for (int line = 0; line < ASCII_LINES_M; line++) {
                 printf("%*s%s\n", (int)(diff + i * (strlen(monster_art[0]) + 1)), "", monster_art[line]);
             }
-            printf("%*sH: %d, A: %d-%d, D: %d\n", (int)(diff + i * (strlen(monster_art[0]) + 1)), "", enemies[i].health, enemies[i].min_attack, enemies[i].max_attack, enemies[i].defense);
+            printf("%*sH: %d, A: %d-%d, D: %d\n", (int)(diff + i * (strlen(monster_art[0]) + 1)), "", enemies[i]->health, enemies[i]->min_attack, enemies[i]->max_attack, enemies[i]->defense);
         }
     }
 }

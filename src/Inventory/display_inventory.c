@@ -7,7 +7,7 @@ void display_inventory(Inventory *inventory) {
     while(current_weapon != NULL) {
         printf("%s : %d - %d - %d\n",
                current_weapon->weapon->name,
-               current_weapon->weapon->number_of_attack,
+               current_weapon->weapon->number_of_attacks,
                current_weapon->weapon->min_damage,
                current_weapon->weapon->max_damage
         );

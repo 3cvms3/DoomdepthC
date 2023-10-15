@@ -22,9 +22,9 @@ typedef struct {
 } Monster;
 
 int my_random_monsters();
-Monster my_generate_monsters(int level);
-void my_display_monsters(Monster *enemies, int count);
-int my_verif_death_monsters(Monster *monsters, int m);
+Monster *my_generate_monsters(int level);
+void my_display_monsters(Monster **enemies, int count);
+int my_verif_death_monsters(Monster **monsters, int monster_count);
 //void my_monsters_attack(Monster *monsters, int monster_count, Player *player);
 
 #endif
