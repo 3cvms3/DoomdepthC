@@ -31,6 +31,7 @@ Room *add_room(Floor *floor, int room_number);
 Floor *add_floor(Floor *last_floor);
 void change_room(Position *player_pos);
 void change_floor(Floor *last_floor, Position *player_pos, int floor_choice);
+void reverse_display_floors(Floor *last_floor, Position *player_pos);
 void display_floors(Floor *last_floor, Position *player_pos);
 
 #endif
