@@ -37,6 +37,12 @@ const char* skull[]={
 "             ^^\\..___,.--`"
 };
 void fight_loop(Player *player, Room *room) {
+//INITIATE REWARDS FOR LEVEL
+struct Reward goldReward = {REWARD_TYPE_GOLD, rand() % 50 + 1};
+struct Reward armorReward = {REWARD_TYPE_ARMOR, rand() % 100 + 1};
+struct Reward weaponReward = {REWARD_TYPE_WEAPON, rand() % 5 + 1};
+
+
     while (player->health > 0 && !my_verif_death_monsters(room->monsters, room->number_of_monsters)) {
         my_player_turn(player, room->monsters, room->number_of_monsters);
 
@@ -58,5 +64,18 @@ void fight_loop(Player *player, Room *room) {
             }
             break;
         }
+        for (int i = 0; i < monster_count; i++) {
+        if (monsters[i]->health <= 0) {
+            printf("Vous avez tué les monstres.\n");
+            
+            
+
+    // Simulate giving rewards to the player
+    giveRewardToPlayer(goldReward);
+    giveRewardToPlayer(armorReward);
+    giveRewardToPlayer(weaponReward);
+
+        }
+    }
     }
 }

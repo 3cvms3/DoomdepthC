@@ -10,7 +10,7 @@
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
-#include "Doomdepths.h"
+#include "../../inc/Doomdepths.h"
 
 int Doomdepths(void) {
     // char choice;
