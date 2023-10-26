@@ -1,0 +1,9 @@
+*.a
+*.o
+*.out
+*.gc*
+vgcore*
+.vscode
+./Doomdepths
+**/*/.DS_Store
+.DS_Store
