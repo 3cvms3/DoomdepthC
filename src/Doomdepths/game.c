@@ -15,14 +15,16 @@
 
 void game_loop(Floor *last_floor, Player *player) {
     while (player->health > 0) {
-        int prompt_choice;
+        char prompt_choice;
+        int choice;
 
         printf("1. Move to next room\n");
         printf("2. Open your inventory\n");
         printf("3. Open your map\n");
-        scanf("%d", &prompt_choice);
+        scanf(" %c", &prompt_choice);
+        choice = (int)(prompt_choice - '0');
 
-        switch (prompt_choice) {
+        switch (choice) {
             case 1:
                 if (player->position.current_room->has_stairs) {
                     last_floor = add_floor(last_floor);
@@ -43,6 +45,7 @@ void game_loop(Floor *last_floor, Player *player) {
                 display_floors(last_floor, &player->position);
                 break;
             default:
+                printf("\nPlease choose between available options\n");
                 break;
         }
     }

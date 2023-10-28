@@ -14,18 +14,22 @@
 
 void my_player_turn(Player *player, Monster **monsters, int monster_count) {
 
+    char prompt_choice;
     int choice;
     
     printf("C'est votre tour! Vous avez %d attaques restantes ce tour.\n", player->number_of_attacks);
     printf("1. Attaquer un monstre\n");
     printf("2. Terminer le tour\n");
-    scanf("%d", &choice);
+    scanf(" %c", &prompt_choice);
+    choice = (int)(prompt_choice - '0');
 
     if (choice == 1 && player->number_of_attacks > 0) {
         
+        char prompt_target;
         int target;
         printf("Quel monstre voulez-vous attaquer (0-%d)? ", monster_count-1);
-        scanf("%d", &target);
+        scanf(" %c", &prompt_target);
+        target = (int)(prompt_target - '0');
         if (target >= 0 && target < monster_count && monsters[target]->health > 0) {
             my_player_attack(player, monsters[target]);
             player->number_of_attacks--;
