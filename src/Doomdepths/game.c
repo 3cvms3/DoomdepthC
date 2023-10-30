@@ -15,12 +15,16 @@
 
 void game_loop(Floor *last_floor, Player *player) {
     while (player->health > 0) {
-        char prompt_choice;
-        int choice;
+        system("clear");
 
+        printf("Please select one of the below options\n");
         printf("1. Move to next room\n");
         printf("2. Open your inventory\n");
         printf("3. Open your map\n");
+
+        char prompt_choice;
+        int choice;
+
         scanf(" %c", &prompt_choice);
         choice = (int)(prompt_choice - '0');
 
