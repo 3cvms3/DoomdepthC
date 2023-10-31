@@ -13,6 +13,7 @@ void remove_weapon(Weapon *weapon, Inventory *inventory) {
                 inventory->linked_weapons = current_weapon->previous_weapon;
             }
 
+            inventory->number_of_items--;
             free(current_weapon);
             break;
         }
