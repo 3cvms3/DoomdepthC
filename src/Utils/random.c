@@ -17,5 +17,5 @@ void my_random() {
 }
 
 int my_random_monsters() {
-    return rand() % 3 + 1; //+ 1 pour que sa soit bien entre 1 et 3 sinon sa serai que de 0 et 3
+    return (rand() % 3) + 1; //+ 1 pour que sa soit bien entre 1 et 3 sinon sa serai que de 0 et 3
 }

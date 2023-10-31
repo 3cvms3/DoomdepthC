@@ -16,7 +16,8 @@ void my_player_turn(Player *player, Monster **monsters, int monster_count) {
 
     char prompt_choice;
     int choice;
-    
+    // my_display_monsters(monsters, monster_count);
+    // my_display_player(player);
     printf("C'est votre tour! Vous avez %d attaques restantes ce tour.\n", player->number_of_attacks);
     printf("1. Attaquer un monstre\n");
     printf("2. Terminer le tour\n");
@@ -33,15 +34,17 @@ void my_player_turn(Player *player, Monster **monsters, int monster_count) {
         if (target >= 0 && target < monster_count && monsters[target]->health > 0) {
             my_player_attack(player, monsters[target]);
             player->number_of_attacks--;
+            // system("clear");
             my_display_monsters(monsters, monster_count);
             my_display_player(player);
         } else {
-            printf("Monstre invalide!\n");
+            printf("Monstre inexistant!\n");
         }
     }
 
     if (choice == 2 || player->number_of_attacks == 0) {
         my_monsters_attack(monsters, monster_count, player);
+        // system("clear");
         my_display_monsters(monsters, monster_count);
         my_display_player(player);
         player->number_of_attacks = 2; //on init les attackes

@@ -30,5 +30,19 @@ void my_display_player(Player *player) {
     for (int line = 0; line < sizeof(player_art) / sizeof(player_art[0]); line++) {
         printf("%*s%s\n", diff, "", player_art[line]);
     }
+    char* H=malloc(sizeof(char)*10);
+    char d='#';
+    char t='_';
+    int ii=0;
+    while(ii<10){
+        if(ii<((player->health*10)/100)){
+            strncat(H,&d,1);
+            ii++;
+        }else{
+            strncat(H,&t,1);
+            ii++;
+        }
+    }
+    printf("\n Health: %s %d \n Mana: %d \n \n",H,player->health,player->mana);  
 }
 

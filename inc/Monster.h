@@ -19,6 +19,8 @@ typedef struct {
     int min_attack;
     int max_attack;
     int defense;
+    int lvl;
+    int health_deb;
 } Monster;
 
 int my_random_monsters();
