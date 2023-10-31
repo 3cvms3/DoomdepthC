@@ -42,7 +42,7 @@ void game_loop(Floor *last_floor, Player *player) {
                 }
                 break;
             case 2:
-                display_inventory(player->inventory);
+                display_player_inventory(player);
                 break;
             case 3:
                 display_floors(last_floor, &player->position);

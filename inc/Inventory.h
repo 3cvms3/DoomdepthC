@@ -50,6 +50,4 @@ void remove_armor(Armor *armor, Inventory *inventory);
 void sell_weapon(Weapon *weapon, Inventory *inventory);
 void sell_armor(Armor *armor, Inventory *inventory);
 
-void display_inventory(Inventory *inventory);
-
 #endif
