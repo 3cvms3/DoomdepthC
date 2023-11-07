@@ -19,7 +19,7 @@ void my_player_attack(Player *player, Monster *monster) {
 
     if (damage < 0) damage = 0;
         monster->health -= damage;
-
+        system("clear");
     if (monster->health < 0) monster->health = 0;
-        printf("Le joueur inflige %d dégâts au monstre. Il reste %d points de vie au monstre.\n", damage, monster->health);
+        printf("\nLe joueur inflige %d dégâts au monstre. Il reste %d points de vie au monstre.\n", damage, monster->health);
 }

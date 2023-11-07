@@ -19,6 +19,7 @@ void my_monsters_attack(Monster **monsters, int monster_count, Player *player) {
             int damage = (rand() % (monsters[i]->max_attack - monsters[i]->min_attack + 1) + monsters[i]->min_attack) - player->equipped_armor->defense;
             if (damage < 0) damage = 0;
             player->health -= damage;
+            system("clear");
             printf("Le monstre %d inflige %d dégâts au joueur. Il reste %d points de vie au joueur.\n", i, damage, player->health);
         }
     }

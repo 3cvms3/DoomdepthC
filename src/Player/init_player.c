@@ -14,7 +14,6 @@
 
 Player *init_player(Floor *floor) {
     Player *player = malloc(sizeof(Player));
-
     player->health = 100;
     player->mana = 100;
 

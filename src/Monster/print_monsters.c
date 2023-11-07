@@ -34,7 +34,21 @@ void my_display_monsters(Monster **enemies, int count) {
             for (int line = 0; line < ASCII_LINES_M; line++) {
                 printf("%*s%s\n", (int)(diff + i * (strlen(monster_art[0]) + 1)), "", monster_art[line]);
             }
-            printf("%*sH: %d, A: %d-%d, D: %d\n", (int)(diff + i * (strlen(monster_art[0]) + 1)), "", enemies[i]->health, enemies[i]->min_attack, enemies[i]->max_attack, enemies[i]->defense);
+            char* H=malloc(sizeof(char)*10);
+            char d='#';
+            char t='_';
+            int ii=0;
+            while(ii<10){
+                if(ii<((enemies[i]->health*10)/enemies[i]->health_deb)){
+                    strncat(H,&d,1);
+                    ii++;
+                }else{
+                    strncat(H,&t,1);
+                    ii++;
+                }
+            }
+            
+            printf("\n %*sHealth: %d %s \n %*sAttack: %d(Min)-%d(Max) \n %*sProtection: %d \n", (int)(diff + i * (strlen(monster_art[0]) + 1)), "", enemies[i]->health,H, (int)(diff + i * (strlen(monster_art[0]) + 1)), "",enemies[i]->min_attack, enemies[i]->max_attack, (int)(diff + i * (strlen(monster_art[0]) + 1)), "", enemies[i]->defense);
         }
     }
 }
