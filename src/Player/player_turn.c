@@ -13,7 +13,10 @@
 #include "Doomdepths.h"
 
 void my_player_turn(Player *player, Monster **monsters, int monster_count) {
-
+    system("clear");
+    my_display_monsters(monsters, monster_count);
+    my_display_player(player);
+    
     char prompt_choice;
     int choice;
     // my_display_monsters(monsters, monster_count);
@@ -34,7 +37,6 @@ void my_player_turn(Player *player, Monster **monsters, int monster_count) {
         if (target >= 0 && target < monster_count && monsters[target]->health > 0) {
             my_player_attack(player, monsters[target]);
             player->number_of_attacks--;
-            // system("clear");
             my_display_monsters(monsters, monster_count);
             my_display_player(player);
         } else {
@@ -44,7 +46,6 @@ void my_player_turn(Player *player, Monster **monsters, int monster_count) {
 
     if (choice == 2 || player->number_of_attacks == 0) {
         my_monsters_attack(monsters, monster_count, player);
-        // system("clear");
         my_display_monsters(monsters, monster_count);
         my_display_player(player);
         player->number_of_attacks = 2; //on init les attackes

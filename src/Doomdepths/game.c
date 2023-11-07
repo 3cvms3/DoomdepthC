@@ -36,14 +36,13 @@ void game_loop(Floor *last_floor, Player *player) {
                 } else {
                     change_room(&player->position);
                 }
-
                 /* On lance le combat si la salle suivante n'est pas vide */
                 if (player->position.current_room->number_of_monsters > 0) {
                     fight_loop(player, player->position.current_room);
                 }
                 break;
             case 2:
-                display_inventory(player->inventory);
+                display_player_inventory(player);
                 break;
             case 3:
                 display_floors(last_floor, &player->position);
