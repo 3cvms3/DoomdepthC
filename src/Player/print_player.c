@@ -24,11 +24,42 @@ const char *player_art[] = {
     "<<<  \\:`'`"
 };
 
+// const char *game_art[] = {
+// " ___     ___    ___   ___ ___  ___      ___  ____  ______  __ __  _____",
+
+// "|   \\   /   \\  /   \\ |   T   T|   \\    /  _]|    \\|      T|  T  T/ ___/",
+
+// "|    \\ Y     YY     Y| _   _ ||    \\  /  [_ |  o  )      ||  l  (   \\_ ",
+
+// "|  D  Y|  O  ||  O  ||  \\_/  ||  D  YY    _]|   _/l_j  l_j|  _  |\\__  T",
+
+// "|     ||     ||     ||   |   ||     ||   [_ |  |    |  |  |  |  |/  \\ |",
+
+// "|     |l     !l     !|   |   ||     ||     T|  |    |  |  |  |  |\\    |",
+
+// "l_____j \\___/  \\___/ l___j___jl_____jl_____jl__j    l__j  l__j__j \\___j",
+
+// };
+
 void my_display_player(Player *player) {
-    int diff = 1;
+    int diff = 40;
 
     for (int line = 0; line < sizeof(player_art) / sizeof(player_art[0]); line++) {
         printf("%*s%s\n", diff, "", player_art[line]);
     }
+    char* H=malloc(sizeof(char)*10);
+    char d='#';
+    char t='_';
+    int ii=0;
+    while(ii<10){
+        if(ii<((player->health*10)/100)){
+            strncat(H,&d,1);
+            ii++;
+        }else{
+            strncat(H,&t,1);
+            ii++;
+        }
+    }
+    printf("\n%*s \x1B[31mHealth:\033[0m %s %d \n %*s\x1B[31mMana:\033[0m %d \n \n",diff,"",H,player->health,diff,"",player->mana);  
 }
 

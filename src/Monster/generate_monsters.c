@@ -20,7 +20,8 @@ Monster *my_generate_monsters(int level) {
     enemy->min_attack = (rand() % 10 + 1) * level;
     enemy->max_attack = (rand() % 20 + enemy->min_attack) * level;
     enemy->defense = (rand() % 10 + 1) * level;
-
+    enemy->lvl=level;
+    enemy->health_deb=enemy->health;
     return enemy;
 }
 

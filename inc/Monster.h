@@ -12,13 +12,15 @@
 
 #ifndef Monster_H_
 #define Monster_H_
-
+//ASCII_LINES_M  represente le nombre de lignes occupees par un monstre
 #define ASCII_LINES_M 10
 typedef struct {
     int health;
     int min_attack;
     int max_attack;
     int defense;
+    int lvl;
+    int health_deb;
 } Monster;
 
 int my_random_monsters();
