@@ -13,6 +13,7 @@ void remove_armor(Armor *armor, Inventory *inventory) {
                 inventory->linked_armors = current_armor->previous_armor;
             }
 
+            inventory->number_of_items--;
             free(current_armor);
             break;
         }

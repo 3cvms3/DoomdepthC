@@ -13,7 +13,10 @@
 #include "Doomdepths.h"
 
 void my_player_turn(Player *player, Monster **monsters, int monster_count) {
-
+    system("clear");
+    my_display_monsters(monsters, monster_count);
+    my_display_player(player);
+    
     char prompt_choice;
     int choice;
     // my_display_monsters(monsters, monster_count);

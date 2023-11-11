@@ -30,4 +30,12 @@ Player *init_player(Floor *floor);
 void my_display_player(Player *player);
 void my_init_player(Player *player);
 
+void equip_weapon(Weapon *weapon, Player *player);
+void equip_armor(Armor *armor, Player *player);
+
+void display_player_inventory(Player *player);
+
+void display_equip_weapons(Player *player);
+void display_equip_armors(Player *player);
+
 #endif
