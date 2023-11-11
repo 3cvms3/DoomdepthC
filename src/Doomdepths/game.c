@@ -14,14 +14,36 @@
 #include "Doomdepths.h"
 
 void game_loop(Floor *last_floor, Player *player) {
+    int diff = 40;
+    const char *game_art[] = {
+" ___     ___    ___   ___ ___  ___      ___  ____  ______  __ __  _____",
+
+"|   \\   /   \\  /   \\ |   T   T|   \\    /  _]|    \\|      T|  T  T/ ___/",
+
+"|    \\ Y     YY     Y| _   _ ||    \\  /  [_ |  o  )      ||  l  (   \\_ ",
+
+"|  D  Y|  O  ||  O  ||  \\_/  ||  D  YY    _]|   _/l_j  l_j|  _  |\\__  T",
+
+"|     ||     ||     ||   |   ||     ||   [_ |  |    |  |  |  |  |/  \\ |",
+
+"|     |l     !l     !|   |   ||     ||     T|  |    |  |  |  |  |\\    |",
+
+"l_____j \\___/  \\___/ l___j___jl_____jl_____jl__j    l__j  l__j__j \\___j",
+
+};
     while (player->health > 0) {
         system("clear");
-
-        printf("Please select one of the below options\n");
-        printf("1. Move to next room\n");
-        printf("2. Open your inventory\n");
-        printf("3. Open your map\n");
-
+        for (int line = 0; line < sizeof(game_art) / sizeof(game_art[0]); line++) {
+            if(line%2==0){
+                printf("%*s%s\n", diff, "", game_art[line]);
+            }else{
+                printf("%*s\x1B[31m%s\033[0m\t\t\n", diff, "", game_art[line]);
+            }
+        }
+                printf("%*s Please select one of the below options\n",diff, "");
+                printf("%*s \x1B[31m1.\033[0m Move to next room\n",diff, "");
+                printf("%*s \x1B[31m2.\033[0m Open your inventory\n",diff, "");
+                printf("%*s \x1B[31m3.\033[0m Open your map\n",diff, "");
         char prompt_choice;
         int choice;
 
@@ -49,7 +71,7 @@ void game_loop(Floor *last_floor, Player *player) {
                 display_floors(last_floor, &player->position);
                 break;
             default:
-                printf("\nPlease choose between available options\n");
+                printf("\n\x1B[31mPlease choose between available options\033[0m\n");
                 break;
         }
     }
