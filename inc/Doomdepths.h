@@ -24,6 +24,7 @@
 #include "Monster.h"
 #include "Cartography.h"
 #include "Player.h"
+#include "Rewards.h"
 #include <sys/ioctl.h>
 #include <unistd.h>
 
