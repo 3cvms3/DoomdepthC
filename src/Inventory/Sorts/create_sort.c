@@ -1,31 +1,31 @@
 /* ********************************************************************************************************* */
 /*                                                                                                           */
 /*                                                              :::::::::: ::::::::   :::::::: :::::::::::   */
-/*   create_weapon.c                                           :+:       :+:    :+: :+:    :+:    :+:        */
+/*   create_sort.c                                             :+:       :+:    :+: :+:    :+:    :+:        */
 /*                                                            +:+       +:+        +:+           +:+         */
 /*   By: camillia <chammou1@myges.fr>                        +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
-/*   Created: 2023/11/12 10:46:22 by camillia              #+#       #+#    #+# #+#    #+#    #+#            */
-/*   Updated: 2023/11/12 10:46:22 by camillia             ########## ########   ######## ###########         */
+/*   Created: 2023/11/12 12:48:56 by camillia              #+#       #+#    #+# #+#    #+#    #+#            */
+/*   Updated: 2023/11/12 21:37:24 by camillia             ########## ########   ######## ###########         */
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
 #include "Doomdepths.h"
 
-Weapon *create_weapon() {
-    static const char *weapon_names[] = {"Sword", "Axe", "Spear", "Bow", "Dagger"};
-    static const int weapon_count = sizeof(weapon_names) / sizeof(weapon_names[0]);
+Sort *create_sort() {
     
-    srand(time(NULL));
+    static const char *sort_names[] = {"BigWeaponn", "MoreBullet", "Lightning Bolt", "Healing otter"};
+    static const SortType sort_types[] = {OFFENSIVE, OFFENSIVE, OFFENSIVE, HEALING};
+    static const int sort_count = sizeof(sort_names) / sizeof(sort_names[0]);
 
-    Weapon *weapon = malloc(sizeof(Weapon));
+    srand(time(NULL)); 
 
-    int random_index = rand() % weapon_count;
-    weapon->name = strdup(weapon_names[random_index]);
+    Sort *sort = malloc(sizeof(Sort));
+    
+    int random_index = rand() % sort_count;
+    sort->name = strdup(sort_names[random_index]);
+    sort->type = sort_types[random_index];
+    sort->power = rand() % 20 + 1;
 
-    weapon->min_damage = rand() % 10 + 1;
-    weapon->max_damage = rand() % 15 + 5;
-    weapon->number_of_attacks = rand() % 4 + 1;
-
-    return weapon;
+    return sort;
 }

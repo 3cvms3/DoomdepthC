@@ -6,53 +6,62 @@
 /*   By: camillia <chammou1@myges.fr>                        +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
 /*   Created: 2023/10/07 20:29:25 by camillia              #+#       #+#    #+# #+#    #+#    #+#            */
-/*   Updated: 2023/10/07 22:16:17 by camillia             ########## ########   ######## ###########         */
+/*   Updated: 2023/11/12 21:36:08 by camillia             ########## ########   ######## ###########         */
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
 #include "Doomdepths.h"
 
 void my_player_turn(Player *player, Monster **monsters, int monster_count) {
-    system("clear");
-    my_display_monsters(monsters, monster_count);
-    my_display_player(player);
-    
+
     char prompt_choice;
     int choice;
-    // my_display_monsters(monsters, monster_count);
-    // my_display_player(player);
-    printf("C'est votre tour! Vous avez \x1B[31m%d\033[0m attaques restantes ce tour.\n", player->number_of_attacks);
-    printf("\x1B[31m1.\033[0m Attaquer un monstre\n");
-    printf("\x1B[31m2.\033[0m Terminer le tour\n");
+
+    // on  clear
+    printf("\x1B[2J\x1B[H");
+
+    my_display_monsters(monsters, monster_count);
+    my_display_player(player);
+
+    printf("\n\x1B[31mIt's your turn!\033[0m You have \x1B[31m%d\033[0m attacks remaining this turn.\n", player->number_of_attacks);
+    printf("\x1B[31m1.\033[0m Attack a monster\n");
+    printf("\x1B[31m2.\033[0m End your turn\n");
+
     scanf(" %c", &prompt_choice);
-    choice = (int)(prompt_choice - '0');
+    choice = (int)(prompt_choice - '0'); //convertis le choix de l'user (caractère) en entier 
 
     if (choice == 1 && player->number_of_attacks > 0) {
-        
+
         char prompt_target;
         int target;
-        printf("Quel monstre voulez-vous attaquer (1-%d)? ", monster_count);
+
+        printf("Which monster do you want to attack (1-%d)? ", monster_count);
         scanf(" %c", &prompt_target);
         target = (int)(prompt_target - '0');
         target--;
+        
+        //on verifie si la cible est valide et le monstre est vivant
         if (target >= 0 && target < monster_count && monsters[target]->health > 0) {
+
+            //on effectue l'attaque du joueur
             my_player_attack(player, monsters[target]);
             player->number_of_attacks--;
-            // system("clear");
+            
+            printf("\x1B[2J\x1B[H");
             my_display_monsters(monsters, monster_count);
             printf("\n");
             my_display_player(player);
         } else {
-            printf("\x1B[31mMonstre inexistant!\033[0m\n");
+            printf("\x1B[31mInvalid monster!\033[0m\n");
         }
     }
 
     if (choice == 2 || player->number_of_attacks == 0) {
         my_monsters_attack(monsters, monster_count, player);
-        // system("clear");
+        printf("\x1B[2J\x1B[H");
         my_display_monsters(monsters, monster_count);
         printf("\n");
         my_display_player(player);
-        player->number_of_attacks = 2; //on init les attackes
+        player->number_of_attacks = 2;
     }
 }

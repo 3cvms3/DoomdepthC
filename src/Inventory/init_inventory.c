@@ -6,5 +6,6 @@ Inventory *init_inventory() {
     inventory->capacity = 8;
     inventory->linked_weapons = NULL;
     inventory->linked_armors = NULL;
+    inventory->linked_sorts = NULL;
     return inventory;
 }

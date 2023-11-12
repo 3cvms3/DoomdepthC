@@ -6,44 +6,46 @@
 /*   By: camillia <chammou1@myges.fr>                        +#++:++#  +#++:++#++ :#:           +#+          */
 /*                                                          +#+              +#+ +#+   +#+#    +#+           */
 /*   Created: 2023/10/07 15:44:05 by camillia              #+#       #+#    #+# #+#    #+#    #+#            */
-/*   Updated: 2023/10/07 22:22:56 by camillia             ########## ########   ######## ###########         */
+/*   Updated: 2023/11/12 21:38:00 by camillia             ########## ########   ######## ###########         */
 /*                                                                                                           */
 /* ********************************************************************************************************* */
 
 
 #include "Doomdepths.h"
 
+void printMenu() {
+    
+    printf("\n");
+
+    printf("\n\n\x1B[33m****************** MAIN MENU ******************\033[0m\n");
+    printf("------------------------------------------------\n");
+
+    printf("\x1B[32m1. Move to next room\033[0m\n");
+    printf("\x1B[34m2. Open your inventory\033[0m\n");
+    printf("\x1B[35m3. Open your map\033[0m\n");
+
+    printf("------------------------------------------------\n\n");
+}
+
 void game_loop(Floor *last_floor, Player *player) {
-    int diff = 40;
+    int diff = 0;
     const char *game_art[] = {
-" ___     ___    ___   ___ ___  ___      ___  ____  ______  __ __  _____",
+    "████████▄   ▄██████▄   ▄██████▄    ▄▄▄▄███▄▄▄▄   ████████▄     ▄████████    ▄███████▄     ███        ▄█    █▄       ▄████████",
+    "███   ▀███ ███    ███ ███    ███ ▄██▀▀▀███▀▀▀██▄ ███   ▀███   ███    ███   ███    ███ ▀█████████▄   ███    ███     ███    ███",
+    "███    ███ ███    ███ ███    ███ ███   ███   ███ ███    ███   ███    █▀    ███    ███    ▀███▀▀██   ███    ███     ███    █▀",
+    "███    ███ ███    ███ ███    ███ ███   ███   ███ ███    ███  ▄███▄▄▄       ███    ███     ███   ▀  ▄███▄▄▄▄███▄▄   ███",
+    "███    ███ ███    ███ ███    ███ ███   ███   ███ ███    ███ ▀▀███▀▀▀     ▀█████████▀      ███     ▀▀███▀▀▀▀███▀  ▀███████████",
+    "███    ███ ███    ███ ███    ███ ███   ███   ███ ███    ███   ███    █▄    ███            ███       ███    ███            ███",
+    "███   ▄███ ███    ███ ███    ███ ███   ███   ███ ███   ▄███   ███    ███   ███            ███       ███    ███      ▄█    ███",
+    "████████▀   ▀██████▀   ▀██████▀   ▀█   ███   █▀  ████████▀    ██████████  ▄████▀         ▄████▀     ███    █▀     ▄████████▀"
 
-"|   \\   /   \\  /   \\ |   T   T|   \\    /  _]|    \\|      T|  T  T/ ___/",
-
-"|    \\ Y     YY     Y| _   _ ||    \\  /  [_ |  o  )      ||  l  (   \\_ ",
-
-"|  D  Y|  O  ||  O  ||  \\_/  ||  D  YY    _]|   _/l_j  l_j|  _  |\\__  T",
-
-"|     ||     ||     ||   |   ||     ||   [_ |  |    |  |  |  |  |/  \\ |",
-
-"|     |l     !l     !|   |   ||     ||     T|  |    |  |  |  |  |\\    |",
-
-"l_____j \\___/  \\___/ l___j___jl_____jl_____jl__j    l__j  l__j__j \\___j",
-
-};
+    };
     while (player->health > 0) {
         system("clear");
         for (int line = 0; line < sizeof(game_art) / sizeof(game_art[0]); line++) {
-            if(line%2==0){
-                printf("%*s%s\n", diff, "", game_art[line]);
-            }else{
-                printf("%*s\x1B[31m%s\033[0m\t\t\n", diff, "", game_art[line]);
-            }
+            printf("%*s\x1B[38;5;52m%s\033[0m\t\t\n", diff, "", game_art[line]);
         }
-                printf("%*s Please select one of the below options\n",diff, "");
-                printf("%*s \x1B[31m1.\033[0m Move to next room\n",diff, "");
-                printf("%*s \x1B[31m2.\033[0m Open your inventory\n",diff, "");
-                printf("%*s \x1B[31m3.\033[0m Open your map\n",diff, "");
+        printMenu(0);
         char prompt_choice;
         int choice;
 
@@ -60,6 +62,7 @@ void game_loop(Floor *last_floor, Player *player) {
                 }
                 /* On lance le combat si la salle suivante n'est pas vide */
                 if (player->position.current_room->number_of_monsters > 0) {
+                    system("clear");
                     fight_loop(player, player->position.current_room);
                 }
                 break;

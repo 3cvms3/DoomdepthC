@@ -1,8 +1,21 @@
+/* ********************************************************************************************************* */
+/*                                                                                                           */
+/*                                                              :::::::::: ::::::::   :::::::: :::::::::::   */
+/*   display_floors.c                                          :+:       :+:    :+: :+:    :+:    :+:        */
+/*                                                            +:+       +:+        +:+           +:+         */
+/*   By: camillia <chammou1@myges.fr>                        +#++:++#  +#++:++#++ :#:           +#+          */
+/*                                                          +#+              +#+ +#+   +#+#    +#+           */
+/*   Created: 2023/11/12 21:51:06 by camillia              #+#       #+#    #+# #+#    #+#    #+#            */
+/*   Updated: 2023/11/12 21:51:09 by camillia             ########## ########   ######## ###########         */
+/*                                                                                                           */
+/* ********************************************************************************************************* */
+
 #include "Doomdepths.h"
 
 void display_floors(Floor *last_floor, Position *player_pos) {
     system("clear");
-    printf("==[ MAP ]==\n\n");
+    printf(ANSI_COLOR_GREEN "╔═══════════════════════════[" EMOJI_MAP " MAP ]═══════════════════════════╗\n" ANSI_COLOR_RESET);
+    printf("\n");
 
     reverse_display_floors(last_floor, player_pos);
 
@@ -10,7 +23,11 @@ void display_floors(Floor *last_floor, Position *player_pos) {
     char prompt_choice;
     int choice;
 
-    printf("\n\n0. Exit map\n");
+    printf(ANSI_COLOR_YELLOW "\n");
+    printf(ANSI_COLOR_YELLOW "\n");
+    printf("║ %d. Exit map " ANSI_COLOR_RED EMOJI_EXIT ANSI_COLOR_YELLOW "\n", 0);
+    printf(ANSI_COLOR_YELLOW "║\n");
+    printf("║ Enter your choice: ");
     scanf(" %c", &prompt_choice);
     choice = (int)(prompt_choice - '0');
 
@@ -21,4 +38,6 @@ void display_floors(Floor *last_floor, Position *player_pos) {
             display_floors(last_floor, player_pos);
             break;
     }
+
+    printf(ANSI_COLOR_GREEN "╚═══════════════════════════════════════════════════════════╝\n" ANSI_COLOR_RESET);
 }
