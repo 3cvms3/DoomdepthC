@@ -37,14 +37,42 @@ const char* skull[]={
 "             ^^\\..___,.--`"
 };
 void fight_loop(Player *player, Room *room) {
+
 //INITIATE REWARDS FOR LEVEL
-struct Reward goldReward = {REWARD_TYPE_GOLD, rand() % 50 + 1};
-struct Reward armorReward = {REWARD_TYPE_ARMOR, rand() % 100 + 1};
-struct Reward weaponReward = {REWARD_TYPE_WEAPON, rand() % 5 + 1};
+
+Weapon weapons_list[] = {
+        {"Axe", 5, 10, 20},
+        {"Longbow", 10, 4, 40},
+        {"Lance", 5, 3, 35},
+        {"Glaive", 3, 30, 80},
+        {"Hammer", 8, 16, 45},
+        {"Knife", 30, 5, 10},
+    };
+
+Armor armor_list[] = {
+        {"Shield", 70},
+        {"Helmet", 80},
+        {"Gauntlets", 30},
+        {"Pauldron", 50},
+        {"Cuirass", 100},
+        {"Sabatons", 20},
+    };
+
+struct Armor armorReward = {armor_list[rand() % 5 + 0]};
+
+struct Weapon weaponReward = {weapons_list[rand() % 5 + 0]};
+
+Weapon weapon=create_weapon(armorReward);
+Armor armor = create_armor(weaponReward);
+
+Int goldReward;
 
 
     while (player->health > 0 && !my_verif_death_monsters(room->monsters, room->number_of_monsters)) {
+
         my_player_turn(player, room->monsters, room->number_of_monsters);
+
+ 
 
         if (player->health <= 0) {
             system("clear");
@@ -63,19 +91,43 @@ struct Reward weaponReward = {REWARD_TYPE_WEAPON, rand() % 5 + 1};
                 }
             }
             break;
-        }
-        for (int i = 0; i < monster_count; i++) {
+
+        }else{
+
+ 
+
+                              for (int i = 0; i < monster_count; i++) {
+
         if (monsters[i]->health <= 0) {
-            printf("Vous avez tué les monstres.\n");
-            
-            
 
-    // Simulate giving rewards to the player
-    giveRewardToPlayer(goldReward);
-    giveRewardToPlayer(armorReward);
-    giveRewardToPlayer(weaponReward);
+            printf("Vous avez tué les monstres.\n");
+
+           
+//initiate number of gold
+            goldReward=(rand()%10+2)*room->number_of_monsters+player->health;
+
+ 
+
+ 
+
+    // giving rewards to the player
+
+    addArmor(armor);
+
+    addWeapon(weapon);
+
+    Inventory->gold_amount+=goldReward ;
 
         }
+
+ 
+
+               }
+
+       
+
     }
+
     }
+
 }
