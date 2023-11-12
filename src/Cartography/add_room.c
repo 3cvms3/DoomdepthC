@@ -19,9 +19,9 @@ Room *add_room(Floor *floor, int room_number) {
     }
 
     /* Ici on vide la première salle du jeu */
-    // if (floor->floor_number == 1 && room_number == 1) {
-    //     new_room->number_of_monsters = 0;
-    // }
+    if (floor->floor_number == 1 && room_number == 1) {
+        new_room->number_of_monsters = 0;
+    }
     
     if (new_room->number_of_monsters > 0) {
         new_room->monsters = malloc(sizeof(Monster *) * new_room->number_of_monsters);

@@ -56,7 +56,6 @@ void fight_loop(Player *player, Room *room) {
                     printf("%*s\x1B[31m%s\033[0m\t\t\n", diff, "", skull[line]);
                 }
             }
-            // printf("\x1B[31mVous avez été tué par les monstres. Fin du jeu!\033[0m\n");
             break;
         }
     }
