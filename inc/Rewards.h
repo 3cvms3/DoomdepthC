@@ -1,4 +1,4 @@
-#ifndef REWARDS_H
+/*#ifndef REWARDS_H
 
 #define REWARDS_H
 
@@ -22,4 +22,4 @@ struct rewardArmor {
 
 };
 
-#endif // REWARDS_H
+#endif // REWARDS_H*/
